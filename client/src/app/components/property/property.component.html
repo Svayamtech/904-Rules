@@ -1,0 +1,14 @@
+
+Property List Component Title: {{title}} <br>
+Count: {{totalProperties.length}} <br>
+Page Row Count: {{pageRowCount}} <br>
+Current Page Number: {{currPageNumber}}
+
+<ul *ngFor="let prop of currPageProperties; index as i;">
+    <li>
+        <app-property-detail [property]="prop" [row]="(currPageNumber-1)*pageRowCount+i+1"></app-property-detail>
+    </li>
+</ul>
+
+<button *ngIf="currPageNumber < (totalProperties.length/pageRowCount)" (click)="nextUsingQueryParams()">Next</button>
+<button *ngIf="currPageNumber > 1" (click)="previousUsingQueryParams()">Previous</button>
